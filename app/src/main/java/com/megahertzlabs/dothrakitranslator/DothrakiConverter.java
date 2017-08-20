@@ -7,10 +7,13 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 class DothrakiConverter {
-    OkHttpClient client = new OkHttpClient();
-    String run(String url)
+
+    private static OkHttpClient client = new OkHttpClient();
+    private static String baseUrl = "http://api.funtranslations.com/translate/dothraki.json?text=";
+
+    static String run(String url)
     {
-        Request request= new Request.Builder().url(url).build();
+        Request request= new Request.Builder().url(baseUrl+url).build();
         try {
             Response response=client.newCall(request).execute();
             return response.body().string();

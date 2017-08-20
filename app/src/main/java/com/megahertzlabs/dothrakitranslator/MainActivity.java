@@ -61,14 +61,12 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            DothrakiConverter obj = new DothrakiConverter();
             try {
                 String encodedUrl = URLEncoder.encode(messageInEnglish, "UTF-8");
-                JSONResult = obj.run("http://api.funtranslations.com/translate/dothraki.json?text="+encodedUrl);
+                JSONResult = DothrakiConverter.run(encodedUrl);
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
-
 
             return null;
         }
@@ -88,14 +86,9 @@ public class MainActivity extends AppCompatActivity {
 
                 e.printStackTrace();
             }
-
-
-
             super.onPostExecute(aVoid);
         }
     }
-
-
 }
 
 
